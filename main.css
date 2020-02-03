@@ -1,0 +1,75 @@
+@-ms-viewport{
+  width: device-width;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+@media screen and (max-width: 610px) {
+  .hide-lg {
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: 455px) {
+  .hide-md {
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: 310px) {
+  .hide-sm {
+    display: none !important;
+  }
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: #111;
+  color: #EEE;
+}
+
+header, footer {
+  text-align: center;
+}
+
+footer a {
+  color: #EEE;
+}
+
+.container {
+  max-width: 620px;
+  margin: 0 auto;
+  width: 100%;
+  text-align: center;
+}
+
+.pad {
+  background-color: #bf37b2;
+  width: 125px;
+  height: 125px;
+  margin: 10px;
+  display: inline-block;
+  border-radius: 10px;
+}
+
+.pad-inner {
+  background-color: #333;
+  width: 115px;
+  height: 115px;
+  margin-top: 5px;
+  margin-left: 5px;
+  border-radius: 10px;
+}
+
+.pressed {
+  background-color: #932996;
+  width: 125px;
+  height: 125px;
+  position: relative;
+  bottom: 2px;
+  right: 2px;
+}
+
+.pad:hover {
+  cursor: pointer;
+}
