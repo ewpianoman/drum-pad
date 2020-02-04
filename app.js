@@ -9,6 +9,16 @@ $('#copyrightDate').text(function() {
   }
 });
 
+// Open/Close Menu
+$('#menu-trigger').click(function() {
+  $('#menu-window').removeClass('hidden');
+});
+
+$('#menu-close').click(function() {
+  $('#menu-window').addClass('hidden');
+});
+
+// Change style of Pads when clicked.
 $('.pad').click(function(event) {
   $(this).children().addClass('pressed');
   setTimeout(function() {

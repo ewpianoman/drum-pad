@@ -11,6 +11,17 @@
   <body>
     <header>
       <h1>Virtual Drum Pad</h1>
+      <button id="menu-trigger">Menu</button>
+      <div id="menu-window" class="hidden">
+        <div id="menu-close">x</div>
+        <h2>OPTIONS</h2>
+        <ul>
+          <li class="menu-options">Edit Theme</li>
+          <li class="menu-options">Edit Layout</li>
+          <li class="menu-options">Customize Keyboard Shortcuts</li>
+          <li class="menu-options">Change Sounds</li>
+        </ul>
+      </div>
     </header>
     <main>
       <div class="container">
@@ -30,6 +41,11 @@
         <div class="pad hide-lg" id="pad14"><div class="pad-inner">&nbsp;</div></div>
         <div class="pad hide-lg" id="pad15"><div class="pad-inner">&nbsp;</div></div>
         <div class="pad hide-lg" id="pad16"><div class="pad-inner">&nbsp;</div></div>
+      </div>
+      <div class="hidden" id="audio">
+        <audio id="sound1">
+          <source src="" type="">
+        </audio>
       </div>
     </main>
     <footer>
