@@ -109,6 +109,15 @@ footer a {
   transition: all .2s;
 }
 
+#menu-window li {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 /* Pad Styles and Layout */
 .container {
   max-width: 620px;
