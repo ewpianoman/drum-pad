@@ -9,21 +9,38 @@ $('#copyrightDate').text(function() {
   }
 });
 
-// Open/Close Menu
-$('#menu-trigger').click(function() {
+// Set up Modal Action
+function modalAction(elementId, openTriggerId, closeTriggerId, noCloseOnItem) {
+  $(openTriggerId).click(function() {
+    $(elementId).removeClass('hidden');
+  });
+
+  $(closeTriggerId).click(function() {
+    $(elementId).addClass('hidden');
+  });
+
+  $(elementId).click(function(e) {
+    if (noCloseOnItem) {
+      if($(e.target).children()[0] != undefined) {
+        $(elementId).addClass('hidden');
+      }
+    } else {
+      $(elementId).addClass('hidden');
+    }
+  });
+}
+
+// Register Back to Menu button
+$('#back').click(function() {
+  $(this).parent().addClass('hidden');
   $('#menu-window').removeClass('hidden');
 });
 
-$('#menu-close').click(function() {
-  $('#menu-window').addClass('hidden');
-});
+// Open/Close Options Menu
+modalAction('#menu-window', '#menu-trigger', '#menuClose', false);
 
-// Close menu if menu window is clicked, but not menu item
-$('#menu-window').click(function(e) {
-  if($(e.target).children()[0] != undefined) {
-    $('#menu-window').addClass('hidden');
-  }
-});
+// Open/Close Theme Editor Window
+modalAction('#edit-modal', '#edit-theme', '#edit-modal-close', true);
 
 // Dark <--> Light UI
 $('#ui-trigger').click(function() {
@@ -35,7 +52,10 @@ $('#ui-trigger').click(function() {
   }
 });
 
-// Change style of Pads when clicked.
+// Show Edit Theme modal when #edit-theme is clicked
+
+
+// Make Pad flash when clicked.
 $('.pad').mousedown(function(event) {
   $(this).children().addClass('pressed');
   setTimeout(function() {

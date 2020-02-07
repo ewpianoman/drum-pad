@@ -11,24 +11,28 @@
   <body>
     <header>
       <h1>Virtual Drum Pad</h1>
-      <button id="menu-trigger">Menu</button>
+      <button id="menu-trigger">Options</button>
       <div id="menu-window" class="hidden">
         <div id="menu-close">x</div>
         <h2>OPTIONS</h2>
         <ul>
-          <li class="menu-options"><span>
-            <div class="switch">
-              <span>Dark UI</span>
-              <input type="checkbox" id="ui">
-              <label for="ui" id="ui-trigger"></label>
-              <span>Light UI</span>
-            </div>
-          </span></li>
-          <li class="menu-options"><span>Edit Theme</span></li>
-          <li class="menu-options"><span>Edit Layout</span></li>
-          <li class="menu-options"><span>Customize Keyboard Shortcuts</span></li>
-          <li class="menu-options"><span>Change Sounds</span></li>
+          <li class="menu-options" id="edit-theme">Edit Theme</li>
+          <li class="menu-options">Edit Layout</li>
+          <li class="menu-options">Customize Keyboard Shortcuts</li>
+          <li class="menu-options">Change Sounds</li>
         </ul>
+      </div>
+      <div id="edit-modal" class="hidden">
+        <div id="edit-modal-close">x</div>
+        <p id="back">&#8592; Back to Main Menu</p>
+        <h2>THEME EDITOR</h2>
+        <div class="switch">
+          <span>Dark UI</span>
+          <input type="checkbox" id="ui">
+          <label for="ui" id="ui-trigger"></label>
+          <span>Light UI</span>
+        </div>
+        
       </div>
     </header>
     <main>
