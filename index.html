@@ -10,7 +10,7 @@
   </head>
   <body>
     <header>
-      <h1>Virtual Drum Pad</h1>
+      <h1>VIRTUAL DRUM PAD</h1>
       <button id="menu-trigger">Options</button>
       <div id="menu-window" class="hidden">
         <div id="menu-close">x</div>
@@ -32,31 +32,35 @@
           <label for="ui" id="ui-trigger"></label>
           <span>Light UI</span>
         </div>
-        
+        <div class="menu-item">
+          <label for="accent-color">Accent Color</label><br>
+          <input type="color" name="accent-color" value="#932996" id="accent-color">
+        </div>
       </div>
     </header>
     <main>
       <div class="container">
-        <div class="pad" id="pad1"><div class="pad-inner">&nbsp;</div></div>
-        <div class="pad" id="pad2"><div class="pad-inner">&nbsp;</div></div>
-        <div class="pad" id="pad3"><div class="pad-inner">&nbsp;</div></div>
-        <div class="pad" id="pad4"><div class="pad-inner">&nbsp;</div></div>
-        <div class="pad hide-sm" id="pad5"><div class="pad-inner">&nbsp;</div></div>
-        <div class="pad hide-sm" id="pad6"><div class="pad-inner">&nbsp;</div></div>
-        <div class="pad hide-sm" id="pad7"><div class="pad-inner">&nbsp;</div></div>
-        <div class="pad hide-sm" id="pad8"><div class="pad-inner">&nbsp;</div></div>
-        <div class="pad hide-md" id="pad9"><div class="pad-inner">&nbsp;</div></div>
-        <div class="pad hide-md" id="pad10"><div class="pad-inner">&nbsp;</div></div>
-        <div class="pad hide-md" id="pad11"><div class="pad-inner">&nbsp;</div></div>
-        <div class="pad hide-md" id="pad12"><div class="pad-inner">&nbsp;</div></div>
-        <div class="pad hide-lg" id="pad13"><div class="pad-inner">&nbsp;</div></div>
-        <div class="pad hide-lg" id="pad14"><div class="pad-inner">&nbsp;</div></div>
-        <div class="pad hide-lg" id="pad15"><div class="pad-inner">&nbsp;</div></div>
-        <div class="pad hide-lg" id="pad16"><div class="pad-inner">&nbsp;</div></div>
+        <div class="pad" id="pad1"><div class="pad-inner"><span class="shortcut-hint"><b>KEY</b><br>q</span></div></div>
+        <div class="pad" id="pad2"><div class="pad-inner"><span class="shortcut-hint"><b>KEY</b><br>w</span></div></div>
+        <div class="pad" id="pad3"><div class="pad-inner"><span class="shortcut-hint"><b>KEY</b><br>e</span></div></div>
+        <div class="pad" id="pad4"><div class="pad-inner"><span class="shortcut-hint"><b>KEY</b><br>r</span></div></div>
+        <div class="pad hide-sm" id="pad5"><div class="pad-inner"><span class="shortcut-hint"><b>KEY</b><br>a</span></div></div>
+        <div class="pad hide-sm" id="pad6"><div class="pad-inner"><span class="shortcut-hint"><b>KEY</b><br>s</span></div></div>
+        <div class="pad hide-sm" id="pad7"><div class="pad-inner"><span class="shortcut-hint"><b>KEY</b><br>d</span></div></div>
+        <div class="pad hide-sm" id="pad8"><div class="pad-inner"><span class="shortcut-hint"><b>KEY</b><br>f</span></div></div>
+        <div class="pad hide-md" id="pad9"><div class="pad-inner"><span class="shortcut-hint"><b>KEY</b><br>u</span></div></div>
+        <div class="pad hide-md" id="pad10"><div class="pad-inner"><span class="shortcut-hint"><b>KEY</b><br>i</span></div></div>
+        <div class="pad hide-md" id="pad11"><div class="pad-inner"><span class="shortcut-hint"><b>KEY</b><br>o</span></div></div>
+        <div class="pad hide-md" id="pad12"><div class="pad-inner"><span class="shortcut-hint"><b>KEY</b><br>p</span></div></div>
+        <div class="pad hide-lg" id="pad13"><div class="pad-inner"><span class="shortcut-hint"><b>KEY</b><br>h</span></div></div>
+        <div class="pad hide-lg" id="pad14"><div class="pad-inner"><span class="shortcut-hint"><b>KEY</b><br>j</span></div></div>
+        <div class="pad hide-lg" id="pad15"><div class="pad-inner"><span class="shortcut-hint"><b>KEY</b><br>k</span></div></div>
+        <div class="pad hide-lg" id="pad16"><div class="pad-inner"><span class="shortcut-hint"><b>KEY</b><br>l</span></div></div>
       </div>
     </main>
     <footer>
-      <p>&copy; <span id="copyrightDate">2020</span> by <a href="https://github.com/ewpianoman" target="_blank" title="Fork me on Github.">Eric Wilson</a></p>
+      <p>Copyright &copy; <span id="copyrightDate">2020</span>.</p>
+      <p>Made with love by <a href="https://github.com/ewpianoman" target="_blank" title="Fork me on Github.">Eric Wilson</a>.</p>
     </footer>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="app.js"></script>

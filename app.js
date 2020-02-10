@@ -47,20 +47,31 @@ $('#ui-trigger').click(function() {
   let n = $('#ui:checked').length;
   if (n === 0) {
     $('body').addClass('light');
+    $('.pad-inner').css('background-color', '#ddd');
   } else if (n === 1) {
     $('body').removeClass('light');
+    $('.pad-inner').css('background-color', '#333');
   }
 });
 
-// Show Edit Theme modal when #edit-theme is clicked
-
-
 // Make Pad flash when clicked.
-$('.pad').mousedown(function(event) {
-  $(this).children().addClass('pressed');
+$('.pad').mousedown(function() {
+  $(this).children().css('background-color', accentColor);
   setTimeout(function() {
-    $('.pad-inner').removeClass('pressed');
+    if($('body').hasClass('light')) {
+      $('.pad-inner').css('background-color', '#ddd');
+    } else {
+        $('.pad-inner').css('background-color', '#333');
+    }
   }, 100);
+});
+
+// Change Accent Color based on User input
+let accentColor = '#bf37b2';
+
+$('#accent-color').on('change', function() {
+  accentColor = $(this).val();
+  $('.pad').css({'background-color': accentColor, 'box-shadow': '1px 1px 5px ' + accentColor});
 });
 
 // Pad Sounds Setup
