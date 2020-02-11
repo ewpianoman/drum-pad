@@ -56,6 +56,14 @@ footer a {
   display: none;
 }
 
+#logo {
+  width: 150px;
+}
+
+header {
+  margin: 0;
+}
+
 /* UI */
 body.light {
   background-color: #fefefe;
@@ -74,13 +82,13 @@ body.light footer a {
   color: #010101;
 }
 
-body.light #menu-trigger, body.light #menu-close, body.light #edit-modal-close {
+body.light #menu-trigger, body.light #menu-close, body.light #edit-modal-close, body.light #save-layout {
   background-color: #ccc;
   color: #010101;
 }
 
 /* Menu */
-#menu-trigger {
+#menu-trigger, #save-layout, #undo {
   position: absolute;
   top: 25px;
   right: 25px;
@@ -91,6 +99,19 @@ body.light #menu-trigger, body.light #menu-close, body.light #edit-modal-close {
   padding: 10px 20px;
   border-radius: 5px;
   letter-spacing: 1px;
+  outline: none;
+}
+
+#undo {
+  left: 25px;
+}
+
+.cancel, #undo {
+  background-color: #ba2525 !important;
+}
+
+#save-layout {
+  background-color: #32a852;
 }
 
 #menu-window, #edit-modal {
@@ -136,11 +157,11 @@ body.light #menu-trigger, body.light #menu-close, body.light #edit-modal-close {
   margin: 0 auto;
 }
 
-#menu-window>ul>li:hover, #menu-close:hover, #edit-modal-close:hover, .pad:hover, #accent-color:hover, #back:hover, label:hover, #menu-trigger:hover {
+#menu-window>ul>li:hover, #menu-close:hover, #edit-modal-close:hover, .pad:hover, #accent-color:hover, #back:hover, label:hover, #menu-trigger:hover, #save-layout:hover, #undo:hover {
   cursor: pointer;
 }
 
-#menu-window>ul>li:hover, #menu-close:hover, #menu-trigger:hover, #edit-modal-close:hover {
+#menu-window>ul>li:hover, #menu-close:hover, #menu-trigger:hover, #edit-modal-close:hover, #save-layout:hover, #undo:hover {
   opacity: .6;
   transition: all .2s;
 }
@@ -246,5 +267,5 @@ body.light #menu-trigger, body.light #menu-close, body.light #edit-modal-close {
 }
 
 .shortcut-hint {
-  font-size: 1.25em;
+  font-size: 1.5em;
 }

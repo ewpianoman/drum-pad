@@ -1,3 +1,6 @@
+// Set up edit variable.
+let edit = false;
+
 // Set Copyright Date Automatically
 let year = new Date().getFullYear();
 
@@ -48,15 +51,36 @@ $('#ui-trigger').click(function() {
   if (n === 0) {
     $('body').addClass('light');
     $('.pad-inner').css('background-color', '#ddd');
+    $('#logo').attr('src', 'logo-dark.png');
   } else if (n === 1) {
     $('body').removeClass('light');
     $('.pad-inner').css('background-color', '#333');
+    $('#logo').attr('src', 'logo.png');
   }
 });
 
+// Show/Hide Undo Changes button
+$('#save-layout').click(function() {
+  $('#undo').removeClass('hidden');
+});
+
+$('#edit-theme').click(function() {
+  $('#undo').removeClass('hidden');
+});
+
+$('#undo').click(function() {
+  $(this).addClass('hidden');
+  location.reload();
+});
+
+// Customize Keyboard Shortcuts
+
 // Make Pad flash when clicked.
 $('.pad').mousedown(function() {
-  $(this).children().css('background-color', accentColor);
+  if (!edit) {
+    $(this).children().css('background-color', accentColor);
+  }
+
   setTimeout(function() {
     if($('body').hasClass('light')) {
       $('.pad-inner').css('background-color', '#ddd');
@@ -74,6 +98,41 @@ $('#accent-color').on('change', function() {
   $('.pad').css({'background-color': accentColor, 'box-shadow': '1px 1px 5px ' + accentColor});
 });
 
+// Make pads draggable to reposition them.
+$('#edit-layout').click(function() {
+  console.log('Edit Layout clicked.');
+  edit = true;
+  $('.pad').draggable();
+  $('.pad').draggable('enable');
+  $('.pad').css('opacity', '.5');
+  $('#save-layout').removeClass('hidden');
+  $('#menu-trigger').addClass('hidden');
+});
+
+$('.pad').mousedown(function() {
+  if (edit) {
+    $(this).css('opacity', '1.0');
+    $('#save-layout').text('Save Changes');
+    $('#save-layout').removeClass('cancel');
+  }
+});
+
+$('.pad').mouseup(function() {
+  if (edit) {
+    $(this).css('opacity', '.5');
+  }
+});
+
+$('#save-layout').click(function() {
+  edit = false;
+  $('.pad').draggable('disable');
+  $(this).addClass('hidden');
+  $(this).addClass('cancel');
+  $(this).text('Cancel');
+  $('#menu-trigger').removeClass('hidden');
+  $('.pad').css('opacity', '1.0');
+});
+
 // Pad Sounds Setup
 // pad = #id
 // sound = filepath to sound
@@ -82,16 +141,21 @@ function registerSound(pad, sound, shortcut) {
   $(document).keydown(function(event) {
     let keycode = (event.keyCode ? event.keyCode : event.which);
     if (keycode == shortcut) {
-      $(pad).mousedown();
+      if (!edit) {
+        $(pad).mousedown();
+      }
     }
   });
 
-  $(pad).mousedown(function() {
-    let audio = new Audio(sound);
-    audio.currentTime = 0;
-    audio.play();
-  });
+    $(pad).mousedown(function() {
+      if (!edit) {
+        let audio = new Audio(sound);
+        audio.currentTime = 0;
+        audio.play();
+      }
+    });
 }
+
 // Row 1
 // Cymbals
 registerSound('#pad1', 'audio/cymbals/cymbal-crash.mp3', 81);
