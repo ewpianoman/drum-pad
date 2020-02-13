@@ -1,5 +1,90 @@
-// Set up edit variable.
+// Set up edit and keyCode listen variables.
 let edit = false;
+let listen = false;
+
+// Set up object for pad IDs and Keycodes
+let padShortcuts = {
+  'pad1': {
+    'id': '#pad1',
+    'sound': 'audio/cymbals/cymbal-crash.mp3',
+    'keyCode': 81
+  },
+  'pad2': {
+    'id': '#pad2',
+    'sound': 'audio/cymbals/cymbal-crash-hard.mp3',
+    'keyCode': 87
+  },
+  'pad3': {
+    'id': '#pad3',
+    'sound': 'audio/cymbals/cymbal-ride-2.mp3',
+    'keyCode': 69
+  },
+  'pad4': {
+    'id': '#pad4',
+    'sound': 'audio/cymbals/cymbal-ride.mp3',
+    'keyCode': 82
+  },
+  'pad5': {
+    'id': '#pad5',
+    'sound': 'audio/hi-hat/hi-hat.mp3',
+    'keyCode': 65
+  },
+  'pad6': {
+    'id': '#pad6',
+    'sound': 'audio/hi-hat/hi-hat-3.mp3',
+    'keyCode': 83
+  },
+  'pad7': {
+    'id': '#pad7',
+    'sound': 'audio/hi-hat/hi-hat-4.mp3',
+    'keyCode': 68
+  },
+  'pad8': {
+    'id': '#pad8',
+    'sound': 'audio/snares/snare.mp3',
+    'keyCode': 70
+  },
+  'pad9': {
+    'id': '#pad9',
+    'sound': 'audio/snares/snare-80s.mp3',
+    'keyCode': 85
+  },
+  'pad10': {
+    'id': '#pad10',
+    'sound': 'audio/snares/rimshot.mp3',
+    'keyCode': 73
+  },
+  'pad11': {
+    'id': '#pad11',
+    'sound': 'audio/toms/tom.mp3',
+    'keyCode': 79
+  },
+  'pad12': {
+    'id': '#pad12',
+    'sound': 'audio/toms/tom-2.mp3',
+    'keyCode': 80
+  },
+  'pad13': {
+    'id': '#pad13',
+    'sound': 'audio/toms/tom-3.mp3',
+    'keyCode': 72
+  },
+  'pad14': {
+    'id': '#pad14',
+    'sound': 'audio/kick/kick.mp3',
+    'keyCode': 74
+  },
+  'pad15': {
+    'id': '#pad15',
+    'sound': 'audio/kick/kick-2.mp3',
+    'keyCode': 75
+  },
+  'pad16': {
+    'id': '#pad16',
+    'sound': 'audio/kick/kick-3.mp3',
+    'keyCode': 76
+  }
+};
 
 // Set Copyright Date Automatically
 let year = new Date().getFullYear();
@@ -68,12 +153,59 @@ $('#edit-theme').click(function() {
   $('#undo').removeClass('hidden');
 });
 
+$('#edit-shortcuts').click(function() {
+  $('#undo').removeClass('hidden');
+});
+
 $('#undo').click(function() {
   $(this).addClass('hidden');
   location.reload();
 });
 
 // Customize Keyboard Shortcuts
+$('#edit-shortcuts').click(function() {
+  edit = true;
+  listen = true;
+  $('.pad').css('opacity', '.5');
+  $('#save-shortcuts').removeClass('hidden');
+  $('#menu-trigger').addClass('hidden');
+  $('.pad').click(function() {
+    if (edit) {
+      $('.pad').css('opacity', '.5');
+      $(this).css('opacity', '1.0');
+      $('.shortcut-prompt').html('&nbsp;');
+      $(this).children('.pad-inner').children('.shortcut-prompt').text('Press any key.');
+      $('#save-shortcuts').removeClass('cancel');
+      $('#save-shortcuts').text('Save Changes');
+      id = $(this).attr('id');
+      // Capture Keycode When Key Is Pressed
+      $(document).keydown(function(event) {
+        if (listen) {
+          let keyCode = (event.keyCode ? event.keyCode : event.which);
+        }
+      });
+    }
+  });
+  $('body').click(function(e) {
+    if (!$(e.target).closest('.pad').length && edit) {
+      $('.pad').css('opacity', '.5');
+      $('.shortcut-prompt').html('&nbsp;');
+    }
+  });
+  $('.shortcut-hint').addClass('hidden');
+});
+
+$('#save-shortcuts').click(function() {
+  edit = false;
+  listen = false;
+  $(this).addClass('hidden');
+  $(this).addClass('cancel');
+  $(this).text('Cancel');
+  $('#menu-trigger').removeClass('hidden');
+  $('.pad').css('opacity', '1.0');
+  $('.shortcut-hint').removeClass('hidden');
+  $('.shortcut-prompt').html('&nbsp;');
+});
 
 // Make Pad flash when clicked.
 $('.pad').mousedown(function() {
@@ -158,29 +290,29 @@ function registerSound(pad, sound, shortcut) {
 
 // Row 1
 // Cymbals
-registerSound('#pad1', 'audio/cymbals/cymbal-crash.mp3', 81);
-registerSound('#pad2', 'audio/cymbals/cymbal-crash-hard.mp3', 87);
-registerSound('#pad3', 'audio/cymbals/cymbal-ride-2.mp3', 69);
-registerSound('#pad4', 'audio/cymbals/cymbal-ride.mp3', 82);
+registerSound(padShortcuts.pad1.id, padShortcuts.pad1.sound, padShortcuts.pad1.keyCode);
+registerSound(padShortcuts.pad2.id, padShortcuts.pad2.sound, padShortcuts.pad2.keyCode);
+registerSound(padShortcuts.pad3.id, padShortcuts.pad3.sound, padShortcuts.pad3.keyCode);
+registerSound(padShortcuts.pad4.id, padShortcuts.pad4.sound, padShortcuts.pad4.keyCode);
 
 // Row 2
 // Hi-Hat
 // Snares
-registerSound('#pad5', 'audio/hi-hat/hi-hat.mp3', 65);
-registerSound('#pad6', 'audio/hi-hat/hi-hat-3.mp3', 83);
-registerSound('#pad7', 'audio/hi-hat/hi-hat-4.mp3', 68);
-registerSound('#pad8', 'audio/snares/snare.mp3', 70);
+registerSound(padShortcuts.pad5.id, padShortcuts.pad5.sound, padShortcuts.pad5.keyCode);
+registerSound(padShortcuts.pad6.id, padShortcuts.pad6.sound, padShortcuts.pad6.keyCode);
+registerSound(padShortcuts.pad7.id, padShortcuts.pad7.sound, padShortcuts.pad7.keyCode);
+registerSound(padShortcuts.pad8.id, padShortcuts.pad8.sound, padShortcuts.pad8.keyCode);
 
 // Row 3
 // Snares & Toms
-registerSound('#pad9', 'audio/snares/snare-80s.mp3', 85);
-registerSound('#pad10', 'audio/snares/rimshot.mp3', 73);
-registerSound('#pad11', 'audio/toms/tom.mp3', 79);
-registerSound('#pad12', 'audio/toms/tom-2.mp3', 80);
+registerSound(padShortcuts.pad9.id, padShortcuts.pad9.sound, padShortcuts.pad9.keyCode);
+registerSound(padShortcuts.pad10.id, padShortcuts.pad10.sound, padShortcuts.pad10.keyCode);
+registerSound(padShortcuts.pad11.id, padShortcuts.pad11.sound, padShortcuts.pad11.keyCode);
+registerSound(padShortcuts.pad12.id, padShortcuts.pad12.sound, padShortcuts.pad12.keyCode);
 
 // Row 4
 // Toms & Kick
-registerSound('#pad13', 'audio/toms/tom-3.mp3', 72);
-registerSound('#pad14', 'audio/kick/kick.mp3', 74);
-registerSound('#pad15', 'audio/kick/kick-2.mp3', 75);
-registerSound('#pad16', 'audio/kick/kick-3.mp3', 76);
+registerSound(padShortcuts.pad13.id, padShortcuts.pad13.sound, padShortcuts.pad13.keyCode);
+registerSound(padShortcuts.pad14.id, padShortcuts.pad14.sound, padShortcuts.pad14.keyCode);
+registerSound(padShortcuts.pad15.id, padShortcuts.pad15.sound, padShortcuts.pad15.keyCode);
+registerSound(padShortcuts.pad16.id, padShortcuts.pad16.sound, padShortcuts.pad16.keyCode);

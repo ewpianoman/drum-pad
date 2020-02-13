@@ -82,13 +82,13 @@ body.light footer a {
   color: #010101;
 }
 
-body.light #menu-trigger, body.light #menu-close, body.light #edit-modal-close, body.light #save-layout {
+body.light #menu-trigger, body.light #menu-close, body.light #edit-modal-close, body.light #save-layout, body.light #save-shortcuts {
   background-color: #ccc;
   color: #010101;
 }
 
 /* Menu */
-#menu-trigger, #save-layout, #undo {
+#menu-trigger, #save-layout, #undo, #save-shortcuts {
   position: absolute;
   top: 25px;
   right: 25px;
@@ -110,7 +110,7 @@ body.light #menu-trigger, body.light #menu-close, body.light #edit-modal-close, 
   background-color: #ba2525 !important;
 }
 
-#save-layout {
+#save-layout, #save-shortcuts {
   background-color: #32a852;
 }
 
@@ -157,11 +157,11 @@ body.light #menu-trigger, body.light #menu-close, body.light #edit-modal-close, 
   margin: 0 auto;
 }
 
-#menu-window>ul>li:hover, #menu-close:hover, #edit-modal-close:hover, .pad:hover, #accent-color:hover, #back:hover, label:hover, #menu-trigger:hover, #save-layout:hover, #undo:hover {
+#menu-window>ul>li:hover, #menu-close:hover, #edit-modal-close:hover, .pad:hover, #accent-color:hover, #back:hover, label:hover, #menu-trigger:hover, #save-layout:hover, #undo:hover, #save-shortcuts:hover {
   cursor: pointer;
 }
 
-#menu-window>ul>li:hover, #menu-close:hover, #menu-trigger:hover, #edit-modal-close:hover, #save-layout:hover, #undo:hover {
+#menu-window>ul>li:hover, #menu-close:hover, #menu-trigger:hover, #edit-modal-close:hover, #save-layout:hover, #undo:hover, #save-shortcuts:hover {
   opacity: .6;
   transition: all .2s;
 }
