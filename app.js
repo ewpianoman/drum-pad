@@ -177,11 +177,20 @@ $('#edit-shortcuts').click(function() {
       $(this).children('.pad-inner').children('.shortcut-prompt').text('Press any key.');
       $('#save-shortcuts').removeClass('cancel');
       $('#save-shortcuts').text('Save Changes');
-      id = $(this).attr('id');
+      let id = $(this).attr('id');
+      let keyCode;
       // Capture Keycode When Key Is Pressed
       $(document).keydown(function(event) {
         if (listen) {
-          let keyCode = (event.keyCode ? event.keyCode : event.which);
+          keyCode = (event.keyCode ? event.keyCode : event.which);
+          $.each(padShortcuts, function(index, value) {
+            if (index === id) {
+              value.keyCode = keyCode;
+              registerSound(value.id, value.sound, value.keyCode);
+              $('#' + index).find('.shortcut-hint').removeClass('hidden').text(String.fromCharCode(keyCode).toLowerCase());
+              $('#' + index).find('.shortcut-prompt').addClass('hidden');
+            }
+          });
         }
       });
     }
